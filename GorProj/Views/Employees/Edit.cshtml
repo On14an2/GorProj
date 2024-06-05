@@ -1,0 +1,60 @@
+﻿@model GorProj.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEmployee" />
+            <div class="form-group">
+                <label asp-for="IdAppointment" class="control-label"></label>
+                <select asp-for="IdAppointment" class="form-control" asp-items="ViewBag.IdAppointment"></select>
+                <span asp-validation-for="IdAppointment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEmployeeStatus" class="control-label"></label>
+                <select asp-for="IdEmployeeStatus" class="form-control" asp-items="ViewBag.IdEmployeeStatus"></select>
+                <span asp-validation-for="IdEmployeeStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameEmployee" class="control-label"></label>
+                <input asp-for="NameEmployee" class="form-control" />
+                <span asp-validation-for="NameEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FamilyEmployee" class="control-label"></label>
+                <input asp-for="FamilyEmployee" class="form-control" />
+                <span asp-validation-for="FamilyEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PatronymicEmployee" class="control-label"></label>
+                <input asp-for="PatronymicEmployee" class="form-control" />
+                <span asp-validation-for="PatronymicEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderEmployee" class="control-label"></label>
+                <input asp-for="GenderEmployee" class="form-control" />
+                <span asp-validation-for="GenderEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthdayEmployee" class="control-label"></label>
+                <input asp-for="BirthdayEmployee" class="form-control" />
+                <span asp-validation-for="BirthdayEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,42 @@
+﻿@using System.Security.Claims
+<div>
+    <div style="height: 10%; background: #d15fff;">
+        <form method='post' action="/Home/Authorization">
+            <p>
+                <label>Login</label><br />
+                <input name='login' />
+            </p>
+            <p>
+                <label>Password</label><br />
+                <input type='password' name='password' />
+            </p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form method="post">
+                    <button type="submit" asp-controller="Home" asp-action="Logout">
+                        Sign Out
+                    </button>
+                </form>
+            }
+            else
+            {
+                <form method="post">
+                    <button type="submit" asp-controller="Home" asp-action="Authorization">
+                        Sign In
+                    </button>
+                </form>
+            }
+        </form>
+        <ul>
+            @if (User.FindFirst(ClaimTypes.Role)?.Value! == "admin")
+            {
+                <li><a asp-controller="Employees" asp-action="Index">Empoyees</a></li>
+                <li><a asp-controller="Organizations" asp-action="Index">Organizations</a></li>
+            }
+            else if(User.FindFirst(ClaimTypes.Role)?.Value! == "user")
+            {
+                <li><a asp-controller="Organizations" asp-action="Index">Organizations</a></li>
+            }
+        </ul>
+    </div>
+</div>

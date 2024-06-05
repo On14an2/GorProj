@@ -1,0 +1,37 @@
+﻿@using System.Security.Claims;
+@model IEnumerable<GorProj.Models.Organization>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (User.FindFirst(ClaimTypes.Role)?.Value! == "admin" || User.FindFirst(ClaimTypes.Role)?.Value! == "user")
+{
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOrganization)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOrganization)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrganization">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdOrganization">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOrganization">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GorProj.Models.Employee>
+
+@{
+    int count = 0;
+    ViewData["Title"] = "Genocide";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FamilyEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatronymicEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenderEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthdayEmployee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAppointmentNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmployeeStatusNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <form asp-action="GenocideAdd">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.NameEmployee)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.FamilyEmployee)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.PatronymicEmployee)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.GenderEmployee)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.BirthdayEmployee)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdAppointmentNavigation.IdAppointment)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdEmployeeStatusNavigation.IdEmployeeStatus)
+            </td>
+            <td>
+
+                    <input type="checkbox" NAME ="selected" value="@item.IdEmployee" />
+            </td>
+        </tr>
+            }
+        <input type="submit" value="GenocideConfirmed" name ="GenocideConfirmed" class="btn btn-danger" />
+        <a asp-action="Index">Back to List</a>
+        </form>
+    </tbody>
+</table>
+
